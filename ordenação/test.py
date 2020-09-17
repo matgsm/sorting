@@ -1,7 +1,17 @@
 import random
+import csv
 from sorting import selection_sort, bubble_sort, insertion_sort
 from sorting import mergesort, quicksort
 
+#fname
+list_name = "random-5000.csv"
+with open(list_name) as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    fname = []
+    i=0
+    for row in csv_reader:
+        x = row[0]
+        fname.append(x)
 
 any_numbers = random.sample(range(1, 1000), 42)
 
@@ -17,7 +27,7 @@ names = ["zeze", "joao", "zeca", "maria" , "pedro", "joana", "pablo", "matheus",
 
 if __name__ == "__main__":
 
-    lista = names  #select list to sort (any_numbers, already_sorted, inversed, repeated, names)
+    lista = fname  #select list to sort (any_numbers, already_sorted, inversed, repeated, names)
     print("\n*******************************\n")
     print(lista)
 
@@ -26,6 +36,7 @@ if __name__ == "__main__":
 #    mergesort (lista)
 #    quicksort(lista)
     
-    print("\n Ordenado:")
+    print("\n\n Ordenado:\n")
     print(lista)
     print("*******************************")
+    print("\nlista ordenada: ", list_name)
