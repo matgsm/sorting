@@ -4,13 +4,14 @@ from sorting import selection_sort, bubble_sort, insertion_sort
 from sorting import mergesort, quicksort
 
 #fname
-list_name = "random-5000.csv"
+list_name = "decrescente-1000.csv"
 with open(list_name) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=',')
+    csv_reader.__next__()
     fname = []
     i=0
     for row in csv_reader:
-        x = row[0]
+        x = [ [row[0] ], [row[1] ], [row[2] ], [row[3] ], [row[4] ] ]
         fname.append(x)
 
 any_numbers = random.sample(range(1, 1000), 42)
