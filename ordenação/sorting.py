@@ -1,5 +1,3 @@
-
-# Vídeo "Quick Sort": https://youtu.be/wx5juM9bbFo
 def quicksort(lista, inicio=0, fim=None):
     if fim is None:
         fim = len(lista)-1
@@ -23,7 +21,8 @@ def partition(lista, inicio, fim):
     lista[i], lista[fim] = lista[fim], lista[i]
     return i
 
-# Vídeo "Merge Sort": https://youtu.be/S5no2qT8_xg
+#****************************************#
+
 def mergesort(lista, inicio=0, fim=None):
     if fim is None:
         fim = len(lista)
@@ -51,7 +50,8 @@ def merge(lista, inicio, meio, fim):
             lista[k] = right[top_right]
             top_right = top_right + 1
 
-# Vídeo "Insertion Sort": https://youtu.be/S5no2qT8_xg
+#****************************************#
+
 def insertion_sort(lista):
     n = len(lista)
     for i in range(1, n):
@@ -64,18 +64,8 @@ def insertion_sort(lista):
 # Complexidade de tempo O(nˆ2)
 # Complexidade de espaço O(n)
 
-# Vídeo "Bubble Sort": https://youtu.be/GiNPe_678Ms
-def bubble_sort(lista):
-    n = len(lista)
-    for j in range(n-1):
-        for i in range(n-1):
-            if lista[i] > lista[i+1]:
-                # troca de elementos nas posições i e i+1
-                lista[i], lista[i+1] = lista[i+1], lista[i]
-# Complexidade de tempo O(nˆ2)
-# Complexidade de espaço O(n)
+#****************************************#
 
-# Vídeo "Selection Sort": https://youtu.be/ZT_dT8yn48s
 def selection_sort(lista):
     n = len(lista)
     for j in range(n-1):
