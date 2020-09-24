@@ -12,10 +12,10 @@ if __name__ == "__main__":
     choice = SelectMethod() 
     time=0.0
 
-    print("\n*******************************\n")
+    print("\n*********************************************************************************************")
     for dados in lista:
         print(dados)
-    print("*******************************")
+    print("*********************************************************************************************")
     
     #ordenando dados:
     
@@ -29,9 +29,10 @@ if __name__ == "__main__":
     else:
         quicksort(lista)
     time2 = timeit.default_timer()
-    print("\n\n Ordenado:\n")
+    print("\n\n\tOrdenado:\n\n")
+    print("*********************************************************************************************")
     for dados in lista:
         print(dados)
-    print("*******************************")
-    print("tempo para ordenar: ",(time2 - time1))
+    print("*********************************************************************************************")
+    print("\ntempo para ordenar: ",(time2 - time1))
 
