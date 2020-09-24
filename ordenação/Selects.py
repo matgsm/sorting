@@ -4,14 +4,14 @@ from os.path import isfile, join
 
 
 def SelectList():
-    path = './logs'
+    path = './logs/'
     files = [f for f in listdir(path) if isfile(join(path, f))]
     print("\nEscolha a lista de logs desejada: ")
     for index,item in enumerate (files):
         print("%d) %s" %(index,item) )
     N_lista =  int( input ("\nNumero da lista: ") )
     if ( (N_lista < len(files) )  and (N_lista >= 0) ):
-        list_name = "./logs/" + files[N_lista]
+        list_name = path + files[N_lista]
         return (list_name)
     else:
         print("\n%d não é uma opção. Tente novamente:" %N_lista)
