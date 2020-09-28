@@ -79,7 +79,7 @@ def merge(lista, inicio, meio, fim):
             top_left = top_left + 1
             comp = comp + 1
         else:
-            lista[k][0] = right[top_right][0]          #compara apenas first_name
+            lista[k] = right[top_right]
             movim = movim + 1                           #movim
             top_right = top_right + 1
             comp = comp + 1
