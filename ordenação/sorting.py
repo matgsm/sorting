@@ -7,9 +7,9 @@ def insertion_sort(lista):
     global comp, movim
     n = len(lista)
     for i in range(1, n):       #for
-        chave = lista[i][0]
+        chave = lista[i]
         j = i - 1
-        while j >= 0 and lista[j][0] > chave:   #compara apenas first_name
+        while j >= 0 and lista[j][0] > chave[0]:   #compara apenas first_name
             lista[j+1] = lista[j]
             movim = movim +1                    #movim
             j = j - 1
