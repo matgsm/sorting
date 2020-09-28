@@ -118,6 +118,9 @@ def partition(lista, inicio, fim):
         lista[i-1], lista[inicio] = lista[inicio], lista[i-1]   
         movim = movim + 1                   #movimentação do pivô
 
+#    lista[i-1], lista[inicio] = lista[inicio], lista[i-1]   
+#    movim = movim + 1                   #movimentação do pivô
+
     return (i-1)
 
 #****************************************#
