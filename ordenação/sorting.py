@@ -10,11 +10,11 @@ def insertion_sort(lista):
         chave = lista[i]
         j = i - 1
         while j >= 0 and lista[j][0] > chave[0]:   #compara apenas first_name
+            comp = comp + 1
             lista[j+1] = lista[j]
             movim = movim +1                    #movim
             j = j - 1
-            comp = comp + 1
-        comp = comp + 1
+        comp = comp + 1         #1 comparação é feita quando nao entra no laço
         lista[j+1] = chave
     
     CompMov = [ [comp],[movim] ]
