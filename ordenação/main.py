@@ -10,6 +10,7 @@ sys.setrecursionlimit(10**4)
 if __name__ == "__main__":
 
     lista = ReadList()          #retorna a lista escolhida entre as presentes em ./logs 
+    listaCopy = lista.copy()
     choice = SelectMethod()     #recebe o indice do metodo de ordenação desejado
     if(choice == 4):
         choice = BestSorting(lista)
@@ -39,3 +40,6 @@ if __name__ == "__main__":
     Print_Method(choice)                                #imprime o metodo de ordenação
     print("\nComparações: ",CompMovTime[0])                 #imprime qtd de comparações
     print("Movimentações: ",CompMovTime[1])                 #imprime qtd de movimentações
+
+    print("\n\nAnalisando melhor metodo de ordenação: ...")
+    BestSorting(listaCopy)
