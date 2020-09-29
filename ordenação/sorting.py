@@ -5,6 +5,7 @@ movim = 0   #quantidade de movimentações entre registros
 
 def insertion_sort(lista):
     global comp, movim
+    comp=movim=0
     n = len(lista)
     for i in range(1, n):       #for
         chave = lista[i]
@@ -27,6 +28,7 @@ def insertion_sort(lista):
 
 def selection_sort(lista):
     global comp, movim
+    comp=movim=0
     n = len(lista)
     for j in range(n-1):
         min_index = j
@@ -49,6 +51,7 @@ def selection_sort(lista):
 
 def mergesort(lista, inicio=0, fim=None):
     global comp, movim
+    comp=movim=0
     if fim is None:
         fim = len(lista)
     if(fim - inicio > 1):
@@ -89,6 +92,7 @@ def merge(lista, inicio, meio, fim):
 
 def quicksort(lista, inicio=0, fim=None):
     global comp, movim
+    comp=movim=0
     if fim is None:
         fim = len(lista)
     if inicio < fim:
