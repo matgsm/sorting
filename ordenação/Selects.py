@@ -46,6 +46,10 @@ def Print_Method(choice):
     global methods
     print("\nMetodo de ordenação escolhido: ", methods[choice])
 
+def Return_Method(choice):
+    global methods
+    return (methods[choice])
+
 def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna o indice do metodo escolhido
     global methods
     print ("\nSelecione um método de ordenação: ")
