@@ -1,9 +1,11 @@
+from sorting import selection_sort, insertion_sort, mergesort, quicksort
 import csv
 from os import listdir
 from os.path import isfile, join
+import timeit
 
 list_name = ""
-methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"] ]
+methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"], ["Automatic"] ]
 
 def SelectList():       #imprime listas disponiveis para o usuario e retorna a lista escolhida
     global list_name
@@ -65,3 +67,38 @@ def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna
         return ( SelectMethod() )
 
 #obs: para a interação com o usuario, o programa aceita numeros, mas apresenta erros se forem recebidos letras ou carac. esp.
+
+    
+
+def BestSorting(CopList):
+    Best = [] 
+    BestChoice = 0
+
+    for i in range (0,4):
+        CopList2 = CopList.copy()
+        if (i==0):
+            Best = SortList(0,CopList2)
+            BestChoice = 0
+        else:
+            T =  SortList(i,CopList2) 
+            if(T[2] < Best[2]):		#compara apenas o tempo
+                Best = T
+                BestChoice = i        
+    print("\n\nMelhor metodo para ordenação: ", Return_Method(BestChoice)  )
+    print("Tempo gasto para ordenar por esse metodo: ", Best[2] )
+    print("Comparações: ", Best[0])                 #imprime qtd de comparações
+    print("Movimentações: ", Best[1])                 #imprime qtd de movimentações
+    return (BestChoice)
+
+def SortList (choice,lista):
+    time1 = timeit.default_timer()
+    if ( (choice) == 0):
+        CompMov = insertion_sort(lista)
+    elif( (choice) == 1):
+        CompMov = selection_sort(lista)
+    elif( (choice) == 2):
+        CompMov = mergesort (lista)
+    else:
+        CompMov = quicksort(lista)
+    time2 = timeit.default_timer()      #(time2)-(time1) determina o tempo de ordenação independente do metodo
+    return(CompMov[0], CompMov[1],(time2 - time1) )
