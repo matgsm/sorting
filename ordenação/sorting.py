@@ -13,7 +13,8 @@ def insertion_sort(lista):
             lista[j+1] = lista[j]
             movim = movim +1                    #movim
             j = j - 1
-        comp = comp + i                 #laço while compara a lista i vezes
+            comp = comp + 1
+        comp = comp + 1
         lista[j+1] = chave
     
     CompMov = [ [comp],[movim] ]
