@@ -5,7 +5,7 @@ from os.path import isfile, join
 import timeit
 
 list_name = ""
-methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"], ["bubble_sort"], ["Automatic"] ]
+methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"], ["bubble_sort"], ["Fastest_Method"] ]
 
 def SelectList():       #imprime listas disponiveis para o usuario e retorna a lista escolhida
     global list_name
@@ -78,21 +78,25 @@ def BestSorting(CopList):
     Best = [] 
     BestChoice = 0
 
-    for i in range (0,4):
-        CopList2 = CopList.copy()
+    time1 = timeit.default_timer()
+    for i in range ( 0 , Last_Method() ):
         if (i==0):
-            Best = SortList(0,CopList2)
+            Best = SortList ( 0 , CopList.copy() )
             BestChoice = 0
         else:
-            T =  SortList(i,CopList2) 
-            if(T[2] < Best[2]):		#compara apenas o tempo
+            T = SortList ( i , CopList.copy() ) 
+            if( T[2] < Best[2] ):		#compara apenas o tempo
                 Best = T
-                BestChoice = i        
+                BestChoice = i         
+    time2 = timeit.default_timer()
+
     print("\n\nMelhor metodo para ordenação: ", Return_Method(BestChoice)  )
     print("Tempo gasto para ordenar por esse metodo: ", Best[2] )
     print("Comparações: ", Best[0])                 #imprime qtd de comparações
     print("Movimentações: ", Best[1])                 #imprime qtd de movimentações
+    print("Tempo para escolher melhor metodo: ", (time2-time1) )
     return (BestChoice)
+
 
 #************************************************************************#
 
