@@ -31,8 +31,8 @@ def Print_ListName():
 
 def ReadList():
     global list_name
-    list_name = SelectList()   #Recebe como retorno a lista escolhida pelo usuario 
-    Print_ListName()    
+    list_name = SelectList()   #Recebe como retorno a lista escolhida pelo usuario
+    Print_ListName()
 
     with open(list_name) as csv_file:   #percorre a lista segundo o formato .csv
         fname = []  #lista lida
@@ -53,7 +53,7 @@ def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna
         print ("%d) %s" %(index,sort) )
     choice = int(input("\nNúmero do método desejado: ") )
 
-    if ( (choice < len(methods) )  and (choice >= 0) ): 
+    if ( (choice < len(methods) )  and (choice >= 0) ):
         Print_Method(choice)
         return (choice)
     else:
@@ -72,12 +72,12 @@ def Last_Method():
     global methods
     return (len(methods)-1)
 #obs: para a interação com o usuario, o programa aceita numeros, mas apresenta erros se forem recebidos letras ou carac. esp.
-    
+
 #************************************************************************#
 
 def BestSorting(CopList):
     global TFastest
-    Best = [] 
+    Best = []
     BestChoice = 0
 
     time1 = timeit.default_timer()
@@ -86,10 +86,10 @@ def BestSorting(CopList):
             Best = SortList ( 0 , CopList.copy() )
             BestChoice = 0
         else:
-            T = SortList ( i , CopList.copy() ) 
+            T = SortList ( i , CopList.copy() )
             if( T[2] < Best[2] ):		#compara apenas o tempo
                 Best = T
-                BestChoice = i         
+                BestChoice = i
     time2 = timeit.default_timer()
     TFastest = (time2 - time1)
 
@@ -122,3 +122,5 @@ def SortList (choice,lista):
         CompMov = bubble_sort(lista)
     time2 = timeit.default_timer()      #(time2)-(time1) determina o tempo de ordenação independente do metodo
     return(CompMov[0], CompMov[1],(time2 - time1) )
+
+#coment adding in atom
