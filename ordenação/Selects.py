@@ -6,6 +6,7 @@ import timeit
 
 list_name = ""
 methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"], ["bubble_sort"], ["Fastest_Method"] ]
+TFastest = 0
 
 def SelectList():       #imprime listas disponiveis para o usuario e retorna a lista escolhida
     global list_name
@@ -75,6 +76,7 @@ def Last_Method():
 #************************************************************************#
 
 def BestSorting(CopList):
+    global TFastest
     Best = [] 
     BestChoice = 0
 
@@ -89,13 +91,19 @@ def BestSorting(CopList):
                 Best = T
                 BestChoice = i         
     time2 = timeit.default_timer()
+    TFastest = (time2 - time1)
 
     print("\n\nMelhor metodo para ordenação: ", Return_Method(BestChoice)  )
     print("Tempo gasto para ordenar por esse metodo: ", Best[2] )
     print("Comparações: ", Best[0])                 #imprime qtd de comparações
     print("Movimentações: ", Best[1])                 #imprime qtd de movimentações
-    print("Tempo para escolher melhor metodo: ", (time2-time1) )
+    print("Tempo para escolher melhor metodo: ", TFastest )
     return (BestChoice)
+
+def TBest_Method():
+    global TFastest
+    if (TFastest != 0):
+        print("Tempo para escolher melhor metodo: ", TFastest )
 
 
 #************************************************************************#
