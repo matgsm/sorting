@@ -3,8 +3,8 @@ movim = 0   #quantidade de movimentações entre registros
 
 def SetZero():
     global comp, movim
-    comp=0
-    movim=0
+    comp = 0
+    movim = 0
 
 #****************************************#
 
@@ -12,15 +12,18 @@ def insertion_sort(lista):
     global comp, movim
     SetZero()
     n = len(lista)
+    
     for i in range(1, n):       #for
         chave = lista[i]
         j = i - 1
+        
         while j >= 0 and lista[j][0] > chave[0]:   #compara apenas first_name
-            comp = comp + 1
+            comp += 1
             lista[j+1] = lista[j]
-            movim = movim +1                    #movim
-            j = j - 1
-        comp = comp + 1         #1 comparação é feita quando nao entra no laço
+            movim += 1                    #movim
+            j -= 1
+        
+        comp += 1         #1 comparação é feita quando nao entra no laço
         lista[j+1] = chave
     
     CompMov = [ [comp],[movim] ]
@@ -35,16 +38,19 @@ def selection_sort(lista):
     global comp, movim
     SetZero()
     n = len(lista)
+    
     for j in range(n-1):
         min_index = j
+        
         for i in range(j, n):
             if lista[i][0] < lista[min_index][0]:                       #compara apenas first_name
                 min_index = i
-            comp = comp + 1
+            comp += 1
+        
         if lista[j][0] > lista[min_index][0]:                           #compara apenas first_name
             lista[j], lista[min_index] = lista[min_index], lista[j]
-            movim = movim + 1                                           #movim
-        comp = comp + 1
+            movim += 1                                           #movim
+        comp += 1
     CompMov = [ [comp],[movim] ]
     return (CompMov)
 
@@ -134,3 +140,19 @@ def partition(lista, inicio, fim):
     return (i-1)
 
 #****************************************#
+
+def bubble_sort(lista):
+    global comp,movim
+    SetZero()
+    n = len(lista)
+    for j in range(n-1):
+        for i in range(n-1):
+            if lista[i] > lista[i+1]:
+                # troca de elementos nas posições i e i+1
+                lista[i], lista[i+1] = lista[i+1], lista[i]
+                movim = movim + 1
+            comp = comp + 1
+    CompMov = [ [comp],[movim] ]
+    return (CompMov)
+# Complexidade de tempo O(nˆ2)
+# Complexidade de espaço O(n)
