@@ -1,10 +1,13 @@
 class menu:
 
-    def __init__(self, lista = [], textos=[], caminho=[]):
+    def __init__(self, lista = [], textos=[], caminho=None):
         self.alternatives = lista
         self.frases = textos
+        self.path = caminho
         if ( len(self.alternatives) ):
-            self.choice = caminho + self.alternatives[ self.SelectMenu() ]
+            self.choice = self.SelectMenu()
+        if (caminho is not None):
+            self.path = self.path + self.alternatives[self.choice]
         else:
             print("\nNenhuma alternativa")
 
@@ -23,7 +26,7 @@ class menu:
             return ( self.SelectMenu() )
 
     def PrintChoice(self):
-        print ( self.personal_text(2), self.choice )
+        print ( self.personal_text(2), self.alternatives [self.choice] )
 
     def personal_text(self, i ):
         if ( len(self.frases) > i ):

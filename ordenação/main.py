@@ -12,7 +12,7 @@ if __name__ == "__main__":
 
     list_name = SelectList()          #retorna a lista escolhida entre as presentes em ./logs
 
-    lista = ReadList(list_name.choice)
+    lista = ReadList(list_name.path )
 
     method = SelectMethod()     #recebe o indice do metodo de ordenação desejado
 
@@ -22,10 +22,10 @@ if __name__ == "__main__":
 
     #lista original
     print ("\n\n\tOriginal:\n\n")
-    print("**********")
+    print("**********" * 10)
     for dados in lista:
         print(dados)        #imprime a lista original
-    print("**********")
+    print("**********" * 10)
 
     #ordenando dados:
     CompMovTime = []
@@ -33,10 +33,10 @@ if __name__ == "__main__":
 
     #lista ordenada
     print("\n\n\tOrdenado:\n\n")
-    print("**********")
+    print("**********" * 10)
     for dados in lista:
         print(dados)        #imprime a lista ordenada
-    print("**********")
+    print("**********" * 10)
 
     print("\ntempo para ordenar: ",CompMovTime[2])                #imprime o tempo para ordenação
     list_name.PrintChoice()                                   #imprime o nome da lista

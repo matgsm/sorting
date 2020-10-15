@@ -43,7 +43,7 @@ def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna
 
     p1 = "\nSelecione um método de ordenação: "
     p2 = "\nNúmero do método desejado: "
-    p3 = "\nMetodo de ordenação escolhido: "
+    p3 = "Metodo de ordenação escolhido: "
     frases = [p1, p2, p3]
 
     method = menu(methods, frases)
@@ -58,7 +58,7 @@ def BestSorting(CopList):
     BestChoice = 0
 
     time1 = timeit.default_timer()
-    for i in range ( 0 , Last_Method() ):
+    for i in range ( 0 , len(method.alternatives)-1 ):
         if (i==0):
             Best = SortList ( 0 , CopList.copy() )
             BestChoice = 0
@@ -70,7 +70,7 @@ def BestSorting(CopList):
     time2 = timeit.default_timer()
     TFastest = (time2 - time1)
 
-    print("\n\nMelhor metodo para ordenação: ", Return_Method(BestChoice)  )
+    print("\n\nMelhor metodo para ordenação: ", method.alternatives[BestChoice]  )
     print("Tempo gasto para ordenar por esse metodo: ", Best[2] )
     print("Comparações: ", Best[0])                 #imprime qtd de comparações
     print("Movimentações: ", Best[1])                 #imprime qtd de movimentações
