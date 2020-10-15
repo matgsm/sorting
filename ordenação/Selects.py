@@ -1,39 +1,28 @@
 from sorting import selection_sort, insertion_sort, mergesort, quicksort, bubble_sort
+from menu import menu
 import csv
 from os import listdir
 from os.path import isfile, join
 import timeit
 
-list_name = ""
-methods = [ ["insertion_sort"], ["selection_sort"],["mergesort"], ["quicksort"], ["bubble_sort"], ["Fastest_Method"] ]
 TFastest = 0
 
-def SelectList():       #imprime listas disponiveis para o usuario e retorna a lista escolhida
-    global list_name
+def SelectList():
+
     path = './logs/'
-    files = [f for f in listdir(path) if isfile(join(path, f))]     #armazena em "files" o nome das listas em ./logs
-    print("\nEscolha a lista de logs desejada: ")
-    for index,item in enumerate (files):
-        print("%d) %s" %(index,item) )              #imprime indices associados a listas ex: 2) random-5000.csv
-    N_lista =  int( input ("\nNumero da lista: ") )
-    if ( (N_lista < len(files) )  and (N_lista >= 0) ):
-        list_name = path + files[N_lista]           # concatena o caminho (path) com o nome da lista (files[N_lista])
-        return (list_name)
-    else:
-        print("\n%d não é uma opção. Tente novamente:" %N_lista)    #impede o usuario de escolher fora do intervalo
-        return ( SelectList() )
+    lists = [f for f in listdir(path) if isfile(join(path, f))]
 
-def Print_ListName():
-    global list_name
-    print ("\nLista de logs selecionada: ",list_name)
+    f1 = "\nEscolha a lista de logs desejada: "
+    f2 = "\nNumero da lista: "
+    f3 = "Lista de logs selecionada: "
+    frases = [f1, f2, f3]
 
+    list_name = menu(lists, frases, path)   #Recebe como retorno a lista escolhida pelo usuario
+    list_name.PrintChoice()
+    return (list_name)
 #************************************************************************#
 
-def ReadList():
-    global list_name
-    list_name = SelectList()   #Recebe como retorno a lista escolhida pelo usuario
-    Print_ListName()
-
+def ReadList(list_name):
     with open(list_name) as csv_file:   #percorre a lista segundo o formato .csv
         fname = []  #lista lida
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -43,35 +32,23 @@ def ReadList():
             fname.append(person)
         return(fname)                   #retorna uma lista segundo o formato .csv independente do numero de colunas
 
-
 #************************************************************************#
 
 def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna o indice do metodo escolhido
-    global methods
-    print ("\nSelecione um método de ordenação: ")
-    for index,sort in enumerate (methods):          #imprime indices associados a metodos de ordenação (ex: "2) mergesort" )
-        print ("%d) %s" %(index,sort) )
-    choice = int(input("\nNúmero do método desejado: ") )
+    global method
 
-    if ( (choice < len(methods) )  and (choice >= 0) ):
-        Print_Method(choice)
-        return (choice)
-    else:
-        print("\n%d não é uma opção. Tente novamente:" %choice) #impede o usuario de escolher fora do intervalo
-        return ( SelectMethod() )
+    methods = [ ["insertion_sort"], ["selection_sort"],
+                ["mergesort"], ["quicksort"],
+                ["bubble_sort"], ["Fastest_Method"]     ]
 
-def Print_Method(choice):
-    global methods
-    print("\nMetodo de ordenação escolhido: ", methods[choice])
+    p1 = "\nSelecione um método de ordenação: "
+    p2 = "\nNúmero do método desejado: "
+    p3 = "\nMetodo de ordenação escolhido: "
+    frases = [p1, p2, p3]
 
-def Return_Method(choice):
-    global methods
-    return (methods[choice])
-
-def Last_Method():
-    global methods
-    return (len(methods)-1)
-#obs: para a interação com o usuario, o programa aceita numeros, mas apresenta erros se forem recebidos letras ou carac. esp.
+    method = menu(methods, frases)
+    method.PrintChoice()
+    return (method)
 
 #************************************************************************#
 
