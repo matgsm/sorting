@@ -129,7 +129,7 @@ def TBest_Method():
 #************************************************************************#
 
 def SortList (choice,lista):
-
+    CompMov = []
     time1 = timeit.default_timer()
     if ( (choice) == 0):
         CompMov = insertion_sort(lista)
@@ -164,7 +164,7 @@ def SelectSearch():
 #************************************************************************#
 
 def SearchList (list,method,sorted):
-    if sorted is False and method is 1:
+    if ( (sorted == False) and (method == 1) ):
         SortList(2, list)
         PrintList (list,"Lista ordenada")
         print("\nLista ordenada automaticamente para a busca binária")
