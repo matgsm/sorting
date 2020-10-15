@@ -1,17 +1,22 @@
 # Busca binária
-def binary_search(array, item, begin=0, end=None):
+def binary_search (list, item, begin=0, end=None):
     if (end is None):
-        end = len(array)-1
+        end = len(list)-1
     if (begin <= end):
         m = (begin + end)//2
-        if (array[m][0].lower() == item.lower() ):
+        if ( list[m][0].lower() == item.lower() ):
             return (m)
-        if (item.lower() < array[m][0].lower() ):
-            return (binary_search(array, item, begin, m-1) )
+        if (item.lower() < list[m][0].lower() ):
+            return (binary_search(list, item, begin, m-1) )
         else:
-            return (binary_search(array, item, m+1, end) )
+            return (binary_search(list, item, m+1, end) )
     return (None)
 
-# lista = [2,3,4]
-# binary_search(lista, 4, 0, len(lista)-1)
-# binary_search(lista, 4)
+
+def linear_search (list, item):
+    end = len(list)
+    for i in range (0 , end ):
+        if (list[i][0].lower() == item.lower() ):
+            return (i)
+
+    return (None)   #Não esta na lista

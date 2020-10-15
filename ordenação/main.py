@@ -1,6 +1,7 @@
-from Selects import SelectList, ReadList, SelectMethod, BestSorting, SortList, TBest_Method
+from Selects import ( SelectList, ReadList, SelectSort, BestSorting, SortList,
+                      SelectSearch, SearchList, Interface, PrintList, print_status  )
+
 from menu import menu
-from search import binary_search
 import timeit
 import sys
 
@@ -9,47 +10,34 @@ sys.setrecursionlimit(10**4)
 
 
 if __name__ == "__main__":
-
-    list_name = SelectList()          #retorna a lista escolhida entre as presentes em ./logs
-
-    lista = ReadList(list_name.path )
-
-    method = SelectMethod()     #recebe o indice do metodo de ordenação desejado
-
-    if(method.choice == len(method.alternatives)-1 ):     #ultima alternativa
-        method.choice = BestSorting(lista)
-    CompMov = []
-
-    #lista original
-    print ("\n\n\tOriginal:\n\n")
-    print("**********" * 10)
-    for dados in lista:
-        print(dados)        #imprime a lista original
-    print("**********" * 10)
-
-    #ordenando dados:
     CompMovTime = []
-    CompMovTime = SortList(method.choice, lista)
 
-    #lista ordenada
-    print("\n\n\tOrdenado:\n\n")
-    print("**********" * 10)
-    for dados in lista:
-        print(dados)        #imprime a lista ordenada
-    print("**********" * 10)
+    list_name = SelectList()
+    list = ReadList (list_name.path)   #caminho completo de list_name
+    PrintList(list,"Original List")
+    sorted = False  #Lista não ordenada
 
-    print("\ntempo para ordenar: ",CompMovTime[2])                #imprime o tempo para ordenação
-    list_name.PrintChoice()                                   #imprime o nome da lista
-    method.PrintChoice()                               #imprime o metodo de ordenação
-    print("\nComparações: ",CompMovTime[0])                 #imprime qtd de comparações
-    print("Movimentações: ",CompMovTime[1])                 #imprime qtd de movimentações
-    TBest_Method()
+    option = Interface(1)
 
-    again = 's'
-    while (again == 's'):
-        name = str( input("\nNome para pesquisar na lista ordenada: ") )
-        i = binary_search(lista, name)
-        if ( i is not None ):
-            print ("\nindice encontrado: ", i)
-            print (lista[i])
-            again = input("Repetir (S/N): ").lower()
+    while (option > 0):
+        if (option == 1):           #sorting
+            sort_name = SelectSort()
+            if(sort_name.choice == sort_name.Last() ):
+                sort_name.choice = BestSorting(list, sort_name)   #método mais rápido
+
+            CompMovTime = SortList(sort_name, list) #ordenando
+            PrintList (list,"Lista ordenada")
+            print_status (list_name, sort_name, CompMovTime)
+            sorted = True   #Lista Ordenada
+
+        elif (option == 2):         #searching
+            search_name = SelectSearch()
+            SearchList (list.copy(), search_name.choice, sorted)
+
+        elif (option == 3):         #switch list
+            list_name = SelectList()
+            list = ReadList(list_name.path )
+            PrintList(list,"Lista original")
+            sorted = False  #Lista não ordenada
+
+        option = Interface()
