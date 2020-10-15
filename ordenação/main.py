@@ -25,7 +25,7 @@ if __name__ == "__main__":
             if(sort_name.choice == sort_name.Last() ):
                 sort_name.choice = BestSorting(list, sort_name)   #método mais rápido
 
-            CompMovTime = SortList(sort_name, list) #ordenando
+            CompMovTime = SortList(sort_name.choice, list) #ordenando
             PrintList (list,"Lista ordenada")
             print_status (list_name, sort_name, CompMovTime)
             sorted = True   #Lista Ordenada
