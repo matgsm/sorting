@@ -41,10 +41,10 @@ def SelectMethod():     #imprime metodos de ordenação para o usuario e retorna
                 ["mergesort"], ["quicksort"],
                 ["bubble_sort"], ["Fastest_Method"]     ]
 
-    p1 = "\nSelecione um método de ordenação: "
-    p2 = "\nNúmero do método desejado: "
-    p3 = "Metodo de ordenação escolhido: "
-    frases = [p1, p2, p3]
+    f1 = "\nSelecione um método de ordenação: "
+    f2 = "\nNúmero do método desejado: "
+    f3 = "Metodo de ordenação escolhido: "
+    frases = [f1, f2, f3]
 
     method = menu(methods, frases)
     method.PrintChoice()
