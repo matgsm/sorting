@@ -11,27 +11,29 @@ class menu:
         else:
             print("\nNenhuma alternativa")
 
-    def SelectMenu(self):     #imprime metodos de ordenação para o usuario e retorna o indice do metodo escolhido
+
+    def SelectMenu(self):
 
         print ( self.personal_text(0) )
-        for index,sort in enumerate (self.alternatives):          #imprime indices associados a metodos de ordenação (ex: "2) mergesort" )
-            print ("%d) %s" %(index,sort) )
+        for index,choices in enumerate (self.alternatives):          #imprime indices 
+            print ("%d) %s" %(index,choices) )
         choice = int ( input(self.personal_text(1)) )
 
         if ( (choice < len(self.alternatives) )  and (choice >= 0) ):
-            #Print_Method(choice)
             return (choice)
         else:
             print("\n%d não é uma opção. Tente novamente:" %choice) #impede o usuario de escolher fora do intervalo
             return ( self.SelectMenu() )
 
+
     def PrintChoice(self):
         print ( self.personal_text(2), self.alternatives [self.choice] )
 
+
     def personal_text(self, i ):
         if ( len(self.frases) > i ):
-            return (self.frases[i])
+            return (self.frases[i]) #saida personalizada
         elif (i==0):
-            return ("\nEscolha: ")
+            return ("\nEscolha: ")  #saida predefinida
         elif (i==1):
-            return ("\nNumero: ")
+            return ("\nNumero: ")   #saida predefinida
