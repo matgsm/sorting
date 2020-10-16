@@ -43,7 +43,7 @@ def PrintList (list, legend=""):
     for dados in list:
         print(dados)        #imprime a lista original
     print("**********" * 10,"\n")
-
+    
 #************************************************************************#
 
 def Interface(begin=None):
@@ -169,13 +169,16 @@ def SearchList (list,method,sorted):
     while (again == 1):
         name = str( input("\nNome para pesquisar na lista: ") )
 
-        i = Search (list, name, method)
+        relatorio = Search (list, name, method)
+        i = relatorio.ind
 
         if ( i is not None ):
             print ("\nIndice encontrado: ", i)
             print (list[i])
+            relatorio.status()
         else:
             print("\nElemento nao encontrado.")
+            relatorio.status()
 
         alternatives = ["Encerrar busca", "Nova busca"]     #again
         f1 = "\nOpções disponíveis: "
@@ -191,12 +194,16 @@ def SearchList (list,method,sorted):
 #************************************************************************#
 
 def Search (list, name, method):
+    time1 = timeit.default_timer()
     if (method == 0):                   #linear_search
-        i = linear_search (list,name)
+        relatorio = linear_search (list,name)
 
-    elif(method == 1):                  #binary_search
-        i = binary_search (list, name)
+    else:                               #binary_search
+        relatorio = binary_search (list, name)
+    time2 = timeit.default_timer()
 
-    return (i)
+    relatorio.time = time2 - time1
+    relatorio.text = "buscar dado"
+    return (relatorio)
 
 #************************************************************************#
