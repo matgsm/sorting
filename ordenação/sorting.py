@@ -99,15 +99,15 @@ def quicksort(lista, inicio=0, fim=None, relatorio=None):
     if fim is None:
         fim = len(lista)
         relatorio = Monitor()
-        R1 = None
-    if inicio < fim:
-        R1 = partition(lista, inicio, fim, relatorio)
-        # recursivamente na sublista à esquerda (menores)
-        R1 = quicksort(lista, inicio, R1.ind, R1)
-        # recursivamente na sublista à direita (maiores)
-        R1 = quicksort(lista, (R1.ind + 1), fim, R1)
 
-        relatorio = R1
+    if inicio < fim:
+        relatorio = partition(lista, inicio, fim, relatorio)
+        i = relatorio.ind   #indice
+        # recursivamente na sublista à esquerda (menores)
+        relatorio = quicksort(lista, inicio, i, relatorio)
+        # recursivamente na sublista à direita (maiores)
+        relatorio = quicksort(lista, i+1, fim, relatorio)
+
     return (relatorio)  #relatorio
 
 def partition(lista, inicio, fim, relatorio):
