@@ -1,6 +1,7 @@
 from sorting import selection_sort, insertion_sort, mergesort, quicksort, bubble_sort
 from menu import menu
 from search import binary_search, linear_search
+from Monitor import Monitor
 import csv
 from os import listdir
 from os.path import isfile, join
@@ -41,7 +42,7 @@ def PrintList (list, legend=""):
     print("**********" * 10)
     for dados in list:
         print(dados)        #imprime a lista original
-    print("**********" * 10)
+    print("**********" * 10,"\n")
 
 #************************************************************************#
 
@@ -107,43 +108,38 @@ def BestSorting(list, method):
             BestChoice = 0
         else:
             T = SortList ( i , list.copy() )
-            if( T[2] < Best[2] ):		#compara apenas o tempo
+            if( T.time < Best.time ):		#compara apenas o tempo
                 Best = T
                 BestChoice = i
     time2 = timeit.default_timer()
 
-    TFastest = (time2 - time1)
-    print("\n\nMelhor metodo para ordenação: ", method.alternatives[BestChoice]  )
-    print("Tempo gasto para ordenar por esse metodo: ", Best[2] )
-    print("Comparações: ", Best[0])                 #imprime qtd de comparações
-    print("Movimentações: ", Best[1])                 #imprime qtd de movimentações
-    print("Tempo para escolher melhor metodo: ", TFastest )
-    return (BestChoice)
+    Best.sec_time = (time2 - time1)
+    Best.text = "ordenar dados por esse metodo:"
+    Best.ind = BestChoice
 
-def TBest_Method():
-    global TFastest
-    if (TFastest != 0):
-        print("Tempo para escolher melhor metodo: ", TFastest )
-
+    Best.status()
+    return (Best)
 
 #************************************************************************#
 
 def SortList (choice,lista):
-    CompMov = []
+
     time1 = timeit.default_timer()
     if ( (choice) == 0):
-        CompMov = insertion_sort(lista)
+        relatorio = insertion_sort(lista)
     elif( (choice) == 1):
-        CompMov = selection_sort(lista)
+        relatorio = selection_sort(lista)
     elif( (choice) == 2):
-        CompMov = mergesort (lista)
+        relatorio = mergesort (lista)
     elif( (choice) == 3):
-        CompMov = quicksort(lista)
+        relatorio = quicksort(lista)
 #    else:
 #        CompMov = bubble_sort(lista)
-    time2 = timeit.default_timer()      #(time2)-(time1) determina o tempo de ordenação independente do metodo
+    time2 = timeit.default_timer()      #(time2)-(time1)
 
-    return(CompMov[0], CompMov[1],(time2 - time1) )
+    relatorio.time = (time2 - time1)
+    relatorio.text = "ordenar dados"
+    return(relatorio )
 
 #************************************************************************#
 
@@ -204,11 +200,3 @@ def Search (list, name, method):
     return (i)
 
 #************************************************************************#
-
-def print_status(list_name, method, CompMovTime):
-    print("\ntempo para ordenar: ",CompMovTime[2])                #imprime o tempo para ordenação
-    list_name.PrintChoice()                                   #imprime o nome da lista
-    method.PrintChoice()                               #imprime o metodo de ordenação
-    print("\nComparações: ",CompMovTime[0])                 #imprime qtd de comparações
-    print("Movimentações: ",CompMovTime[1])                 #imprime qtd de movimentações
-    TBest_Method()

@@ -1,7 +1,8 @@
 from Selects import ( SelectList, ReadList, SelectSort, BestSorting, SortList,
-                      SelectSearch, SearchList, Interface, PrintList, print_status  )
+                      SelectSearch, SearchList, Interface, PrintList  )
 
 from menu import menu
+from Monitor import Monitor
 import timeit
 import sys
 
@@ -21,14 +22,21 @@ if __name__ == "__main__":
 
     while (option > 0):
         if (option == 1):           #sorting
+            Best = None
             sort_name = SelectSort()
             if(sort_name.choice == sort_name.Last() ):
-                sort_name.choice = BestSorting(list, sort_name)   #método mais rápido
+                Best = BestSorting(list, sort_name)
+                sort_name.choice = Best.ind
 
-            CompMovTime = SortList(sort_name.choice, list) #ordenando
+            relatorio = SortList(sort_name.choice, list) #ordenando
             PrintList (list,"Lista ordenada")
-            print_status (list_name, sort_name, CompMovTime)
             sorted = True   #Lista Ordenada
+
+            sort_name.PrintChoice()
+            list_name.PrintChoice()
+            relatorio.status()
+            if (Best is not None):
+                Best.time_best()
 
         elif (option == 2):         #searching
             search_name = SelectSearch()
