@@ -18,7 +18,7 @@ class Monitor:
         if (self.text is None):
             self.text = "processar"
         print("\nTempo para %s: " %(self.text) ,self.time)
-        print("\nComparações: ",self.comp)
+        print("Comparações: ",self.comp)
         if (self.movim is not None):
             print("Movimentações: ", self.movim)
         self.time_best()
