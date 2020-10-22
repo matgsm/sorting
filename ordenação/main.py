@@ -1,24 +1,20 @@
 import timeit
 import sys
-
 from use_list import select_list, read_list, print_list
 from use_sorting import select_sort, best_sorting, sort_list
 from use_search import select_search, list_information, search_list
 from menu import Menu, interface
 from monitor import Monitor
-
 sys.setrecursionlimit(10**4)
-#quantidade de recursão padrao do python estava sendo excedida, portanto foi aumentada de 10^3 para 10^4
 
+ALWAYS_ORDERED = False
 
 if __name__ == "__main__":
 
     list_name = select_list()            #Cria o Menu de seleção de listas
     list = read_list (list_name.path)
     print_list(list,"Original List")
-    sorted = True   #trabalhando apenas com listas ordenadas
-    #sorted = False  #Para qualquer tipo de listas
-        #obs: lista pode estar ordenada previamente mas o programa nao sabe.
+    sorted = ALWAYS_ORDERED
 
     first = True    #primeira execução
     option = interface(first)
@@ -64,10 +60,7 @@ if __name__ == "__main__":
             list_name = select_list()
             list = read_list(list_name.path )
             print_list(list,"Lista original")
-            sorted = True   #trabalhando com listas ordenadas
-#            sorted = False  #Lista não ordenada
-
-
+            sorted = ALWAYS_ORDERED
 
         first = False       #demais execuções do menu
         option = interface(first)

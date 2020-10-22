@@ -1,3 +1,3 @@
 para adicionar essas listas ao programa, basta movelas para a pasta anterior (logs).
 no linux:
-mv * ../
+cp decrescente-* random-* ../
