@@ -53,11 +53,14 @@ def print_search(list, relatorio):
 
     indice = relatorio.ind
     if ( indice is not None ):
-        print("\n","**********"*5)
+        print("\n")
+        print("**********"*10)
         print ("\nIndice encontrado: ", indice)
         print (list[indice])
         relatorio.status()
     else:
+        print("\n")
+        print("**********"*10)
         print("\nElemento nao encontrado.")
         relatorio.status()
 
