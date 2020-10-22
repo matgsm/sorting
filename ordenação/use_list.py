@@ -1,9 +1,9 @@
 from os import listdir
 from os.path import isfile, join
-from menu import menu
 import csv
+from menu import Menu
 
-def SelectList():       #Menu seleção de listas
+def select_list():       #Menu seleção de listas
 
     path = './logs/'
     alternatives =  [f for f in listdir(path) if isfile(join(path, f))]
@@ -14,13 +14,13 @@ def SelectList():       #Menu seleção de listas
     f3 = "Lista de logs selecionada: "
     frases = [f1, f2, f3]               #frases personalizadas
 
-    list_name = menu (alternatives, frases, path)   #cria o Menu
-    list_name.PrintChoice()
+    list_name = Menu (alternatives, frases, path)   #cria o Menu
+    list_name.print_choice()
     return (list_name)
 
 #************************************************************************#
 
-def ReadList(list_name):
+def read_list(list_name):
 
     with open(list_name) as csv_file:   #percorre a lista segundo o formato .csv
         list_person = []  #lista lida
@@ -33,12 +33,9 @@ def ReadList(list_name):
 
 #************************************************************************#
 
-def PrintList (list, legend=""):
+def print_list (list, legend=""):
     print ("\n\n\t%s\n\n" %(legend) )
     print("**********" * 10)
     for dados in list:
         print(dados)        #imprime a lista
     print("**********" * 10,"\n")
-
-
-#************************************************************************#

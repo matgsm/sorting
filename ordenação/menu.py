@@ -1,4 +1,4 @@
-class menu:
+class Menu:
     #atributes
     alternatives = []
     frases = ["\nEscolha: ", "\nResposta: ", ""]    #padrao
@@ -11,14 +11,14 @@ class menu:
         self.path = caminho
         self.frases = textos
         if ( len(self.alternatives) > 0 ):
-            self.choice = self.SelectMenu()
+            self.choice = self.select_menu()
         else:
             print("\nNenhuma alternativa")
         if (caminho is not None):
             self.path = self.path + self.alternatives[self.choice]
 
     #Method 1
-    def SelectMenu(self):
+    def select_menu(self):
         print ( self.frases[0] )                #permite personalização de texto
         for index,choices in enumerate (self.alternatives):
             print ("%d) %s" %(index,choices) )  #Enumera as alternativas
@@ -30,20 +30,24 @@ class menu:
             return (choice)
         else:
             print("\n%d não é uma opção. Tente novamente:" %choice) #impede o usuario de escolher fora do intervalo
-            return ( self.SelectMenu() )
+            return ( self.select_menu() )
 
     #Method 2
-    def PrintChoice(self):
+    def print_choice(self):
         print ( self.frases[2], self.alternatives [self.choice] )
         #permite personalização da mensagem padrao
 
+
+
     #Method 3
-    def Last(self):
+    def last(self):
         return ( len(self.alternatives) - 1 )
+
+    #fim da classe
 
 #************************************************************************#
 
-def Interface( first=False ):       #Menu controle
+def interface( first=False ):       #Menu controle
 
     if (first is True):     #primeira execução
 
@@ -57,8 +61,8 @@ def Interface( first=False ):       #Menu controle
         f3 = "Opção escolhida: "
         frases = [f1, f2, f3]           #frases personalizadas
 
-        option = menu (alternatives, frases)        #cria o Menu
-        option.PrintChoice()
+        option = Menu (alternatives, frases)        #cria o Menu
+        option.print_choice()
         return (option.choice)
 
     else:   #demais execuções
@@ -75,6 +79,6 @@ def Interface( first=False ):       #Menu controle
         f3 = "Opção escolhida: "
         frases = [f1, f2, f3]           #frases personalizadas
 
-        option = menu (alternatives, frases)
-        option.PrintChoice()
+        option = Menu (alternatives, frases)
+        option.print_choice()
         return (option.choice)

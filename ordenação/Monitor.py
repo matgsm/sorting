@@ -16,7 +16,7 @@ class Monitor:
     #methods
     def status (self):
         if (self.text is None):
-            self.text = "\nTempo para processar:"
+            self.text = "Tempo para processar:"
         print(self.text ,self.time)
         print("Comparações: ",self.comp)
         if (self.movim != 0):

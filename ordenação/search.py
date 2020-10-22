@@ -1,4 +1,4 @@
-from Monitor import Monitor
+from monitor import Monitor
 
 def linear_search (list, item):
     end = len(list)

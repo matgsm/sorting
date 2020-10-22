@@ -1,4 +1,4 @@
-from Monitor import Monitor
+from monitor import Monitor
 import timeit
 
 #****************************************#
@@ -53,15 +53,15 @@ def selection_sort(lista):
 
 #****************************************#
 
-def mergesort(lista, inicio=0, fim=None, relatorio=None):
+def merge_sort(lista, inicio=0, fim=None, relatorio=None):
     if fim is None:
         fim = len(lista)
         relatorio = Monitor()
         R1 = None
     if(fim - inicio > 1):
         meio = (fim + inicio) // 2    # '//' retorna a parte inteira da divisao
-        relatorio = mergesort(lista, inicio, meio, relatorio)
-        relatorio = mergesort(lista, meio, fim, relatorio)
+        relatorio = merge_sort(lista, inicio, meio, relatorio)
+        relatorio = merge_sort(lista, meio, fim, relatorio)
         relatorio = merge(lista, inicio, meio, fim, relatorio)
 
 #        relatorio.comp += R1.comp + R2.comp + R3.comp
@@ -96,7 +96,7 @@ def merge(lista, inicio, meio, fim, relatorio):
 
 #****************************************#
 
-def quicksort(lista, inicio=0, fim=None, relatorio=None):
+def quick_sort(lista, inicio=0, fim=None, relatorio=None):
     if fim is None:
         fim = len(lista)
         relatorio = Monitor()
@@ -105,9 +105,9 @@ def quicksort(lista, inicio=0, fim=None, relatorio=None):
         relatorio = partition(lista, inicio, fim, relatorio)
         i = relatorio.ind   #indice
         # recursivamente na sublista à esquerda (menores)
-        relatorio = quicksort(lista, inicio, i, relatorio)
+        relatorio = quick_sort(lista, inicio, i, relatorio)
         # recursivamente na sublista à direita (maiores)
-        relatorio = quicksort(lista, i+1, fim, relatorio)
+        relatorio = quick_sort(lista, i+1, fim, relatorio)
 
     return (relatorio)  #relatorio
 
