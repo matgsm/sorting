@@ -7,7 +7,7 @@ from menu import Menu, interface
 from monitor import Monitor
 sys.setrecursionlimit(10**4)
 
-ALWAYS_ORDERED = False
+ALWAYS_ORDERED = True
 
 if __name__ == "__main__":
 

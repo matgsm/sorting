@@ -44,7 +44,7 @@ def search (list, name, method):
     time2 = timeit.default_timer()
 
     relatorio.time = time2 - time1
-    relatorio.text = "\nTempo para buscar dado: "
+    relatorio.text = "Tempo para buscar dado: "
     return (relatorio)
 
 #************************************************************************#
@@ -53,6 +53,7 @@ def print_search(list, relatorio):
 
     indice = relatorio.ind
     if ( indice is not None ):
+        print("\n","**********"*5)
         print ("\nIndice encontrado: ", indice)
         print (list[indice])
         relatorio.status()

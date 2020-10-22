@@ -37,7 +37,7 @@ def best_sorting(list, method):
     time2 = timeit.default_timer()
 
     best.sec_time = (time2 - time1)
-    best.text = "\nTempo para ordenar dados por esse metodo:"
+    best.text = "Tempo para ordenar dados por esse metodo:"
     best.ind = best_choice
 
     best.status()
@@ -63,5 +63,5 @@ def sort_list (choice,lista):
     time2 = timeit.default_timer()      #(time2)-(time1)
 
     relatorio.time = (time2 - time1)
-    relatorio.text = "\nTempo para ordenar dados: "
+    relatorio.text = "Tempo para ordenar dados: "
     return(relatorio )

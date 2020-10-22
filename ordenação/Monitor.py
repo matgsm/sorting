@@ -22,6 +22,8 @@ class Monitor:
         if (self.movim != 0):
             print("Movimentações: ", self.movim)
         self.time_best()
+        print("\n")
+        print("**********" * 10)
 
     def time_best(self):
         if (self.sec_time is not None):
