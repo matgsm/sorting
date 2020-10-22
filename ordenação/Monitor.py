@@ -4,7 +4,7 @@ class Monitor:
     sec_time = None
     comp = None     #comparisons
     movim = None    #movimentations
-    ind = None      #indice
+    ind = None      #indice para metodos de busca
     text = None
 
     #constructor
@@ -16,8 +16,8 @@ class Monitor:
     #methods
     def status (self):
         if (self.text is None):
-            self.text = "processar"
-        print("\nTempo para %s: " %(self.text) ,self.time)
+            self.text = "\nTempo para processar:"
+        print(self.text ,self.time)
         print("Comparações: ",self.comp)
         if (self.movim is not 0):
             print("Movimentações: ", self.movim)
