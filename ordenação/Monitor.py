@@ -19,7 +19,7 @@ class Monitor:
             self.text = "\nTempo para processar:"
         print(self.text ,self.time)
         print("Comparações: ",self.comp)
-        if (self.movim is not 0):
+        if (self.movim != 0):
             print("Movimentações: ", self.movim)
         self.time_best()
 
