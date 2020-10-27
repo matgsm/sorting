@@ -68,42 +68,12 @@ def print_search(list, relatorio):
 
 def more_search():           #Menu: nova busca?
 
-        alternatives = ["Encerrar busca", "Nova busca"]     #again
-        f1 = "\nOpções disponíveis: "
-        f2 = "\nOpção desejada: "
-        f3 = "Opção escolhida: "
-        frases = [f1, f2, f3]
+    alternatives = ["Encerrar busca", "Nova busca"]     #again
+    f1 = "\nOpções disponíveis: "
+    f2 = "\nOpção desejada: "
+    f3 = "Opção escolhida: "
+    frases = [f1, f2, f3]
 
-        again = Menu(alternatives, frases)
-        again.print_choice()
-        return (again.choice)
-
-#************************************************************************#
-
-def list_information(list, sorted):
-
-            #Menu: lista está ordenada? levanta mais dados sobre a lista
-            alternatives = [ ["Sim, lista esta ordenada."],
-                             ["Não, lista não está ordenada."],
-                             ["Não sei se a lista está ordenada"]   ]
-
-            f1 = "\nA lista está ordenada? "
-            f2 = "\nResposta: "
-            f3 = ""
-            frases = [f1,f2,f3]
-
-            info_list = Menu(alternatives, frases)
-            info_list.print_choice()
-
-            if(info_list.choice == 0):    #lista ordenada
-                sorted = True
-                return (sorted) #lista original está ordenada
-
-            else:
-                merge_sort (list)
-                print_list (list,"Lista ordenada")
-                print("\nLista ordenada automaticamente para a busca binária")
-                #Apenas a lista copiada para a busca binaria está Ordenada
-                #A lista original continua desordenada
-                sorted = False
-                return (sorted)
+    again = Menu(alternatives, frases)
+    again.print_choice()
+    return (again.choice)

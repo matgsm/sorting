@@ -39,3 +39,27 @@ def print_list (list, legend=""):
     for dados in list:
         print(dados)        #imprime a lista
     print("**********" * 10,"\n")
+
+#************************************************************************#
+
+def list_information(list):
+
+        #Menu: lista está ordenada? levanta mais dados sobre a lista
+        alternatives = [ ["Não, não sei ou lista não está ordenada."],
+                         ["Sim, lista está ordenada."]   ]
+
+        f1 = "\nA lista está ordenada? "
+        f2 = "\nResposta: "
+        f3 = ""
+        frases = [f1,f2,f3]
+
+        info_list = Menu(alternatives, frases)
+        info_list.print_choice()
+
+        if(info_list.choice == 1):    #lista ordenada
+            sorted = True
+            return (sorted) #lista original está ordenada
+
+        else:
+            sorted = False
+            return (sorted)

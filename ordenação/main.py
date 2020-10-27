@@ -1,24 +1,44 @@
 import timeit
 import sys
-from use_list import select_list, read_list, print_list
+from use_list import select_list, read_list, print_list, list_information
 from use_sorting import select_sort, best_sorting, sort_list
-from use_search import select_search, list_information, search_list
+from use_search import select_search, search_list
 from menu import Menu, interface
 from monitor import Monitor
 sys.setrecursionlimit(10**4)
 
-ALWAYS_ORDERED = True
+ALWAYS_ORDERED = False
 
 if __name__ == "__main__":
 
-    list_name = select_list()            #Cria o Menu de seleção de listas
+    #Constantes para sort_name:
+    INSERTION_SORT = 0
+    SELECTION_SORT = 1
+    MERGE_SORT = 2
+    QUICK_SORT = 3
+    FASTEST_METHOD = 4  #last
+
+    #Constantes para search_name:
+    LINEAR = 0
+    BINARIA = 1
+
+    list_name = select_list()            #Menu de seleção de listas
     list = read_list (list_name.path)
     print_list(list,"Original List")
-    sorted = ALWAYS_ORDERED
+
+    #buscar mais dados sobre a lista
+    if (ALWAYS_ORDERED is True):
+        sorted = ALWAYS_ORDERED
+    else:
+        sorted = list_information(list)
+
+
 
     first = True    #primeira execução
     option = interface(first)
     #option: [0]Sair; [1]ordenar; [2]Buscar; [3]imprimir lista
+
+
 
     while (option > 0):
         if (option == 1):#sorting
@@ -26,8 +46,9 @@ if __name__ == "__main__":
             best = None
 
             sort_name = select_sort()
-            #sort_name: [0]insertion_sort; [1]selection_sort; [2]mergesort
-            #           [3]quicksort; [4]Fastest_Method
+
+
+
             if(sort_name.choice == sort_name.last() ):  #if Fastest_Method
                 best = best_sorting(list, sort_name)
                 sort_name.choice = best.ind
@@ -43,24 +64,31 @@ if __name__ == "__main__":
                 best.time_best()
 
         elif (option == 2):#searching
-            cp_list = list.copy()   # NÃO modifica a lista original
-            search_name = select_search()    #search_name: [0]Linear; [1]binaria
+            search_name = select_search()
 
-            if ( (search_name.choice == 1) and (sorted == False) ):
-                sorted = list_information(cp_list, sorted)
-                #busca mais dados sobre a lista
-
-            search_list (cp_list, search_name.choice)
-            #faz a busca
+            if ( (search_name.choice == BINARIA) and (sorted == False) ):
+                cp_list = list.copy()
+                relatorio = sort_list(MERGE_SORT, cp_list) #ordenando
+                print_list (cp_list,"Lista ordenada")
+                print("Lista ordenada automaticamente apenas para a busca binária.\n")
+                relatorio.status()
+                search_list (cp_list, search_name.choice)
+                del cp_list
+            else:
+                search_list (list, search_name.choice)
 
         elif (option == 3):
              print_list(list,"Lista salva em memoria: ")
 
         elif (option == 4):         #switch list
+            del list
             list_name = select_list()
             list = read_list(list_name.path )
             print_list(list,"Lista original")
-            sorted = ALWAYS_ORDERED
+            if (ALWAYS_ORDERED is True):    #buscar mais dados sobre a lista
+                sorted = ALWAYS_ORDERED
+            else:
+                sorted = list_information(list)
 
         first = False       #demais execuções do menu
         option = interface(first)
