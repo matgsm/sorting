@@ -47,8 +47,6 @@ if __name__ == "__main__":
 
             sort_name = select_sort()
 
-
-
             if(sort_name.choice == sort_name.last() ):  #if Fastest_Method
                 best = best_sorting(list, sort_name)
                 sort_name.choice = best.ind

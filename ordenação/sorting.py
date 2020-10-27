@@ -17,7 +17,7 @@ def insertion_sort(lista):
             movim += 1                    #movim
             j -= 1
 
-        comp += 1         #1 comparação é feita quando nao entra no laço
+        comp += 1
         lista[j+1] = chave
 
     relatorio = Monitor (comp, movim)
@@ -36,13 +36,13 @@ def selection_sort(lista):
         min_index = j
 
         for i in range(j, n):
-            if lista[i][0] < lista[min_index][0]:                       #compara apenas first_name
+            if lista[i][0] < lista[min_index][0]:   #compara apenas first_name
                 min_index = i
             comp += 1
 
-        if lista[j][0] > lista[min_index][0]:                           #compara apenas first_name
+        if lista[j][0] > lista[min_index][0]:   #compara apenas first_name
             lista[j], lista[min_index] = lista[min_index], lista[j]
-            movim += 1                                           #movim
+            movim += 1
         comp += 1
     relatorio = Monitor (comp, movim)
     return (relatorio)
@@ -57,15 +57,13 @@ def merge_sort(lista, inicio=0, fim=None, relatorio=None):
     if fim is None:
         fim = len(lista)
         relatorio = Monitor()
-        R1 = None
+
     if(fim - inicio > 1):
         meio = (fim + inicio) // 2    # '//' retorna a parte inteira da divisao
         relatorio = merge_sort(lista, inicio, meio, relatorio)
         relatorio = merge_sort(lista, meio, fim, relatorio)
         relatorio = merge(lista, inicio, meio, fim, relatorio)
 
-#        relatorio.comp += R1.comp + R2.comp + R3.comp
-#        relatorio.movim = R1.movim + R2.movim + R3.movim
     return (relatorio)
 
 def merge(lista, inicio, meio, fim, relatorio):
