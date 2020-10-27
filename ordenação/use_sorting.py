@@ -19,6 +19,7 @@ def select_sort():
     method.print_choice()
     return (method)
 
+#****************************************#
 
 def best_sorting(list, method):
     best = Monitor()
@@ -42,7 +43,6 @@ def best_sorting(list, method):
 
     best.status()
     return (best)
-
 
 #****************************************#
 

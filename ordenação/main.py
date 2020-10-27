@@ -22,7 +22,8 @@ if __name__ == "__main__":
     LINEAR = 0
     BINARIA = 1
 
-    list_name = select_list()            #Menu de seleção de listas
+    #Menu de seleção de listas
+    list_name = select_list()
     list = read_list (list_name.path)
     print_list(list,"Original List")
 
@@ -32,13 +33,9 @@ if __name__ == "__main__":
     else:
         sorted = list_information(list)
 
-
-
     first = True    #primeira execução
     option = interface(first)
     #option: [0]Sair; [1]ordenar; [2]Buscar; [3]imprimir lista
-
-
 
     while (option > 0):
         if (option == 1):#sorting
